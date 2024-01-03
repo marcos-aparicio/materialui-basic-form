@@ -49,10 +49,13 @@ export default function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <AppBar position="fixed">
-          <Toolbar variant="dense">
+          <Toolbar
+            variant="dense"
+            sx={{ display: "flex", justifyContent: "space-between" }}
+          >
             <Typography variant="h6">Multi-Step Form</Typography>
+            <ThemeToggler />
           </Toolbar>
-          <ThemeToggler />
         </AppBar>
         <CssBaseline />
         <Container>
