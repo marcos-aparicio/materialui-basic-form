@@ -8,6 +8,7 @@ import {
   CssBaseline,
   Toolbar,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
 import React from "react";
@@ -30,7 +31,10 @@ const ThemeToggler = () => {
 };
 
 export default function App() {
-  const [mode, setMode] = React.useState<"light" | "dark">("light");
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [mode, setMode] = React.useState<"light" | "dark">(
+    prefersDarkMode ? "dark" : "light"
+  );
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
