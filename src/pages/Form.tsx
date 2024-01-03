@@ -1,5 +1,13 @@
 import { number, object, ObjectSchema, string } from "yup";
-import { Box, Button, Card, CardContent } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Step,
+  StepLabel,
+  Stepper,
+} from "@mui/material";
 import { FormikProps, useFormik } from "formik";
 import React, { useState } from "react";
 import { FirstSection } from "./FormSections/FirstSection";
@@ -18,6 +26,8 @@ const CurrentStep = ({ step, formik }: CurrentStepProps) => {
   ];
   return Components[step] || <div>Page not found</div>;
 };
+
+const stepSubtitles = ["Personal Data", "Bank Accounts", "More Info"];
 
 const LAST_STEP = 2;
 
@@ -77,6 +87,13 @@ export const TheForm = () => {
   return (
     <Card>
       <CardContent>
+        <Stepper activeStep={step} alternativeLabel>
+          {stepSubtitles.map((subtitle, idx) => (
+            <Step key={idx}>
+              <StepLabel>{subtitle}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
         <CurrentStep step={step} formik={formik} />
         <Box className="navigation-buttons">
           {step === 0 ? null : <Button onClick={handleBack}>Back</Button>}
