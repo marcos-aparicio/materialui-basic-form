@@ -1,17 +1,23 @@
-import { Checkbox, FormControlLabel, TextField } from "@mui/material";
+import { Checkbox, FormControlLabel, Grid, TextField } from "@mui/material";
 import { extendProps } from "../../utils";
 
 export const FirstSection = ({ formik }: { formik: any }) => {
   return (
-    <>
-      <TextField label="First Name" {...extendProps("firstName", formik)} />
-      <TextField label="Last Name" {...extendProps("lastName", formik)} />
-      <FormControlLabel
-        label="Am i a millionaire?"
-        labelPlacement="start"
-        control={<Checkbox checked={formik.values.millionaire} />}
-        {...extendProps("millionaire", formik)}
-      />
-    </>
+    <Grid container my={2} rowGap={2} alignItems="center">
+      <Grid item xs={12}>
+        <TextField label="First Name" {...extendProps("firstName", formik)} />
+      </Grid>
+      <Grid item xs={12}>
+        <TextField label="Last Name" {...extendProps("lastName", formik)} />
+      </Grid>
+      <Grid item xs={12}>
+        <FormControlLabel
+          label="Am i a millionaire?"
+          labelPlacement="start"
+          control={<Checkbox checked={formik.values.millionaire} />}
+          {...extendProps("millionaire", formik)}
+        />
+      </Grid>
+    </Grid>
   );
 };
