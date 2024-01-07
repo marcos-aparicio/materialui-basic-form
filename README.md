@@ -1,6 +1,6 @@
 # Basic React Form
 
-Basic react form to showcase Material UI components and custom theming, Formik and Yup.
+Basic react form to showcase Material UI components, custom theming and light-dark mode switching; Formik and Yup.
 
 Project inspired by these 2 videos:
 
