@@ -87,7 +87,6 @@ export const TheForm = () => {
     },
     onSubmit: (values) => {
       if (isLastStep) {
-        console.log("submitting form");
         console.log(values);
         return;
       }
@@ -104,23 +103,52 @@ export const TheForm = () => {
   return (
     <Card>
       <CardContent>
-        <Stepper activeStep={step} alternativeLabel>
-          {stepSubtitles.map((subtitle, idx) => (
-            <Step key={idx}>
-              <StepLabel>{subtitle}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-        <CurrentStep step={step} formik={formik} />
-        <Box className="navigation-buttons">
-          {step === 0 ? null : <Button onClick={handleBack}>Back</Button>}
-          <Button
-            onClick={() => {
-              formik.handleSubmit();
+        <Box
+          sx={{
+            pt: 2,
+            mx: "auto",
+            maxWidth: {
+              xs: "250px",
+              sm: "400px",
+              md: "670px",
+              lg: "900px",
+            },
+          }}
+        >
+          <Stepper activeStep={step} alternativeLabel>
+            {stepSubtitles.map((subtitle, idx) => (
+              <Step key={idx}>
+                <StepLabel>{subtitle}</StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+          <Box
+            sx={{
+              pt: 2,
+              display: "flex",
+              alignItems: "center",
+              minHeight: {
+                xs: "200px",
+                sm: "250px",
+              },
             }}
           >
-            {step === LAST_STEP ? "Submit" : "Next"}
-          </Button>
+            <CurrentStep step={step} formik={formik} />
+          </Box>
+          <Grid container className="navigation-buttons">
+            <Grid item xs={6} justifyContent="start">
+              {step === 0 ? null : <Button onClick={handleBack}>Back</Button>}
+            </Grid>
+            <Grid item xs={6} sx={{ display: "flex", justifyContent: "end" }}>
+              <Button
+                onClick={() => {
+                  formik.handleSubmit();
+                }}
+              >
+                {step === LAST_STEP ? "Submit" : "Next"}
+              </Button>
+            </Grid>
+          </Grid>
         </Box>
       </CardContent>
     </Card>
