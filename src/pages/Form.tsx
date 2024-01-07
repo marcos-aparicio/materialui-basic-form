@@ -1,4 +1,4 @@
-import { number, object, ObjectSchema, string } from "yup";
+import { number, object, string } from "yup";
 import {
   Box,
   Button,
@@ -14,6 +14,7 @@ import React, { useState } from "react";
 import { FirstSection } from "./FormSections/FirstSection";
 import { SecondSection } from "./FormSections/SecondSection";
 import { ThirdSection } from "./FormSections/ThirdSection";
+import { CodeBlock } from "../components/codeBlock";
 
 interface CurrentStepProps {
   step: number;
@@ -50,6 +51,7 @@ const LAST_STEP = 2;
 
 export const TheForm = () => {
   const [step, setStep] = useState(0);
+  const [resultObject, setResultObject] = useState<any>(undefined);
 
   const validationSchemaIncrementer = React.useMemo(() => {
     if (step === 0) {
@@ -87,7 +89,7 @@ export const TheForm = () => {
     },
     onSubmit: (values) => {
       if (isLastStep) {
-        console.log(values);
+        setResultObject(values);
         return;
       }
       setStep((s) => s + 1);
@@ -113,6 +115,12 @@ export const TheForm = () => {
               md: "670px",
               lg: "900px",
             },
+            display: "flex",
+            flexDirection: "column",
+            minHeight: {
+              xs: "300px",
+              sm: "450px",
+            },
           }}
         >
           <Stepper activeStep={step} alternativeLabel>
@@ -127,15 +135,25 @@ export const TheForm = () => {
               pt: 2,
               display: "flex",
               alignItems: "center",
-              minHeight: {
-                xs: "200px",
-                sm: "250px",
-              },
             }}
           >
             <CurrentStep step={step} formik={formik} />
           </Box>
-          <Grid container className="navigation-buttons">
+          {resultObject !== undefined && step === LAST_STEP ? (
+            <CodeBlock
+              value={JSON.stringify(resultObject, null, 2)}
+              language="json"
+            />
+          ) : null}
+          <Grid
+            container
+            className="navigation-buttons"
+            sx={{
+              // justifySelf: "flex-end",
+              // alignSelf: "flex-end",
+              marginTop: "auto",
+            }}
+          >
             <Grid item xs={6} justifyContent="start">
               {step === 0 ? null : <Button onClick={handleBack}>Back</Button>}
             </Grid>
