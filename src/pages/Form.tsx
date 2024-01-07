@@ -4,6 +4,7 @@ import {
   Button,
   Card,
   CardContent,
+  Grid,
   Step,
   StepLabel,
   Stepper,
@@ -24,7 +25,23 @@ const CurrentStep = ({ step, formik }: CurrentStepProps) => {
     <SecondSection formik={formik} />,
     <ThirdSection formik={formik} />,
   ];
-  return Components[step] || <div>Page not found</div>;
+  return (
+    (
+      <Grid
+        container
+        sx={{
+          mx: "auto",
+          maxWidth: {
+            xs: "100%",
+            sm: "80%",
+            md: "60%",
+          },
+        }}
+      >
+        {Components[step]}
+      </Grid>
+    ) || <div>Page not found</div>
+  );
 };
 
 const stepSubtitles = ["Personal Data", "Bank Accounts", "More Info"];
