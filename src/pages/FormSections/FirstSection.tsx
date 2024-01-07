@@ -3,7 +3,7 @@ import { extendProps } from "../../utils";
 
 export const FirstSection = ({ formik }: { formik: any }) => {
   return (
-    <Grid container my={2} rowGap={2} alignItems="center">
+    <Grid container>
       <Grid item xs={12}>
         <TextField label="First Name" {...extendProps("firstName", formik)} />
       </Grid>
