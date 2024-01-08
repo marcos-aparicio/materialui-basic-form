@@ -21,3 +21,7 @@ After that run:
 ```
 npm start
 ```
+
+# Deployed Project
+
+Page was deployed to github pages using [gh-pages package](https://www.npmjs.com/package/gh-pages) and result can be seen here: https://marcos-aparicio.github.io/materialui-basic-form/
