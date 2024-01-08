@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/materialui-basic-form/static/css/main.9c0ef2de.css",
+    "main.js": "/materialui-basic-form/static/js/main.92617c6a.js",
+    "static/js/787.9c1d3db4.chunk.js": "/materialui-basic-form/static/js/787.9c1d3db4.chunk.js",
+    "index.html": "/materialui-basic-form/index.html",
+    "main.9c0ef2de.css.map": "/materialui-basic-form/static/css/main.9c0ef2de.css.map",
+    "main.92617c6a.js.map": "/materialui-basic-form/static/js/main.92617c6a.js.map",
+    "787.9c1d3db4.chunk.js.map": "/materialui-basic-form/static/js/787.9c1d3db4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9c0ef2de.css",
+    "static/js/main.92617c6a.js"
+  ]
+}
